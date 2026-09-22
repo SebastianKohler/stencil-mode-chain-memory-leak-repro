@@ -10,6 +10,27 @@ bug: hydrate `modeResolutionChain` retains every SSR render when `modes` is omit
 
 The problem is also present in the Stencil hydrate runtimes embedded in Ionic 8.6.0 through Ionic 9.0.4. The last tested non-leaking Ionic bundle uses Stencil Hydrate Platform 4.20.0; the first tested leaking bundle uses 4.33.1.
 
+## System information
+
+Output of `npx stencil info` from the minimal reproduction:
+
+```text
+      System: node 24.20.0
+    Platform: windows (10.0.26200)
+   CPU Model: Intel(R) Core(TM) Ultra 7 155U (14 cpus)
+    Compiler: C:\Users\sebkoh\GitHub\stencil-mode-chain-memory-leak-repro\node_modules\@stencil\core\compiler\stencil.js
+       Build: 1789171487
+     Stencil: 4.45.0
+  TypeScript: 5.8.3
+      Rollup: 4.44.0
+      Parse5: 7.2.1
+      jQuery: 4.0.0-pre
+      Terser: 5.37.0
+```
+
+- npm: `11.19.0`
+- Browser: not applicable; this is a Node-only SSR/hydrate reproduction and no browser is launched.
+
 ## Current behavior
 
 Repeated calls to `renderToString()` retain memory when the generated hydrate app has a global script that calls `setMode()` and the caller does not provide the optional `modes` property.
