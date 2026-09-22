@@ -1,0 +1,4 @@
+node_modules/
+hydrate/
+.stencil/
+src/components.d.ts

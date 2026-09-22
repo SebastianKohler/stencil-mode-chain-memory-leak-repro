@@ -1,0 +1,14 @@
+{
+  "name": "stencil-mode-chain-memory-leak-repro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "stencil build",
+    "repro": "node --expose-gc repro.mjs",
+    "repro:workaround": "node --expose-gc repro.mjs --modes-empty"
+  },
+  "devDependencies": {
+    "@stencil/core": "4.45.0"
+  }
+}
